@@ -19,7 +19,7 @@ public class ProductController {
     ProductService productService;
 
      @GetMapping("/{id}")
-    public ResponseEntity<ProductDTO> findProductById(@PathVariable Long id) {
+    public ResponseEntity<ProductDTO> findProductById(@PathVariable(name = "id") Long id) {
         ProductDTO productDTO = productService.findProductById(id);
         return (productDTO != null)?  new ResponseEntity<>(productDTO, HttpStatus.OK) :
                                      new ResponseEntity<>(HttpStatus.NOT_FOUND); 
